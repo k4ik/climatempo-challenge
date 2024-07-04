@@ -31,9 +31,9 @@ function App() {
     <>
       <Header />
       <SearchBox onSearch={fetchData} />
-      <main className="bg-zinc-300 h-screen">
-        <p className="text-center text-xl pt-8 pb-8">{location ? `Previsão para ${location}` : ""}</p>
-        <section className="grid grid-cols-2 justify-items-center gap-y-16">
+      <main className="bg-zinc-300 min-h-screen p-4">
+        <p className="text-center text-sm pt-8 pb-8 sm:text-xl">{location ? `Previsão para ${location}` : ""}</p>
+        <section className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-y-16">
           {results.map((result, index) => (
             <Card key={index} data={result} />
           ))}
