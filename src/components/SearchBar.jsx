@@ -15,7 +15,7 @@ function SearchBox({onSearch}) {
 
     return (
         <form onSubmit={handleSubmit}  className="flex justify-between h-12">
-            <input type="text" className="w-full outline-none px-4" value={query} onChange={handleChange} />
+            <input type="text" className="w-full outline-none px-4" value={query} onChange={handleChange} placeholder="Pesquisar..." />
             <button className="w-12 flex justify-center items-center" type="submit">
                 <Search />
             </button>
