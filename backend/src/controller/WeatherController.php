@@ -1,6 +1,6 @@
 <?php
 namespace Controller;
-
+use Exception;
 use Dotenv\Dotenv;
 
 class WeatherController
@@ -16,6 +16,10 @@ class WeatherController
     $key = $_ENV["key"];
 
     $location = $_POST["location"];
+    if(empty($location)) {
+      echo json_encode(["error" => "Preencha todos os campos corretamente"]);
+      return;
+    }
     $location = $this->formatString($location);
 
     $this->getResponse($key, $location);
@@ -42,6 +46,11 @@ class WeatherController
       curl_close($curl);
 
       $data = json_decode($response, true);
+      if($data["location"]["name"] == null) {
+        echo json_encode(["error" => "Sinto muito, não encontramos sua localização :c"]);
+        return;
+      }
+
       $weatherData = $this->fragmentWeatherData($data);
 
       echo json_encode($weatherData);
@@ -54,6 +63,7 @@ class WeatherController
   {
     $name = $data["location"]["name"];
     $region = $data["location"]["region"];
+
     $conditions = [
       [
         $data["forecast"]["forecastday"][0]["day"]["condition"]["text"],
@@ -68,6 +78,7 @@ class WeatherController
         $data["forecast"]["forecastday"][2]["day"]["condition"]["icon"]
       ]
     ];
+
     $forecasts = [
       [
         date('d/m/Y', strtotime($data["forecast"]["forecastday"][0]["date"])),
@@ -131,8 +142,6 @@ class WeatherController
         ]
       ]
     ];
-
     return $weather;
   }
-
 }
