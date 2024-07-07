@@ -70,21 +70,21 @@ class WeatherController
     ];
     $forecasts = [
       [
-        $data["forecast"]["forecastday"][0]["date"],
+        date('d/m/Y', strtotime($data["forecast"]["forecastday"][0]["date"])),
         $data["forecast"]["forecastday"][0]["day"]["maxtemp_c"],
         $data["forecast"]["forecastday"][0]["day"]["mintemp_c"],
         $data["forecast"]["forecastday"][0]["day"]["totalprecip_mm"],
         $data["forecast"]["forecastday"][0]["day"]["daily_chance_of_rain"],
       ],
       [
-        $data["forecast"]["forecastday"][1]["date"],
+        date('d/m/Y', strtotime($data["forecast"]["forecastday"][1]["date"])),
         $data["forecast"]["forecastday"][1]["day"]["maxtemp_c"],
         $data["forecast"]["forecastday"][1]["day"]["mintemp_c"],
         $data["forecast"]["forecastday"][1]["day"]["totalprecip_mm"],
         $data["forecast"]["forecastday"][1]["day"]["daily_chance_of_rain"],
       ],
       [
-        $data["forecast"]["forecastday"][2]["date"],
+        date('d/m/Y', strtotime($data["forecast"]["forecastday"][2]["date"])),
         $data["forecast"]["forecastday"][2]["day"]["maxtemp_c"],
         $data["forecast"]["forecastday"][2]["day"]["mintemp_c"],
         $data["forecast"]["forecastday"][2]["day"]["totalprecip_mm"],
@@ -134,4 +134,5 @@ class WeatherController
 
     return $weather;
   }
+
 }
