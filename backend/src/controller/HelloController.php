@@ -3,7 +3,7 @@ namespace Controller;
 
 class HelloController
 {
-    public function helloWorld()
+    public function helloWorld(): void
     {
         echo "Hello World!\n";
     }
