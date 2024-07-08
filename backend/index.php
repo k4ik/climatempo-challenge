@@ -8,7 +8,7 @@ header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('POST', '/weather', 'WeatherController@getData');
+    $r->addRoute('POST', '/weather', 'WeatherController@index');
     $r->addRoute('GET', '/helloworld', 'HelloController@helloWorld');
 });
 
