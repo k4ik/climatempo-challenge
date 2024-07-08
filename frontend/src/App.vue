@@ -4,7 +4,7 @@
       <img src="./assets/images/logo.png" alt="logo" class="w-40" />
     </header>
     <form @submit.prevent="fetchData" class="flex justify-between items-center px-4 py-2" id="form">
-      <input type="text" name="location" placeholder="Pesquisar..." autocomplete="off" class="w-full outline-none" v-model="search" />
+      <input type="text" name="city" placeholder="Search..." autocomplete="off" class="w-full outline-none" v-model="search" />
       <button type="submit" class="border-none"><Search /></button>
     </form>
     <main class="bg-zinc-300 min-h-screen">
@@ -12,7 +12,7 @@
         <p class="text-center py-4 text-xs md:text-base">{{message}}</p>
       </section>
       <section v-else>
-        <p v-if=weather class="text-center py-4 text-xs md:text-base">Previsões para {{ weather.name }} - {{ weather.region }}</p>
+        <p v-if=weather class="text-center py-4 text-xs md:text-base">Forecast for {{ weather.name }} - {{ weather.region }}</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 p-4 justify-items-center">
           <article v-for="day in weather?.forecast ?? []" :key="day.date" class="flex flex-col max-w-80 w-full bg-white shadow-md rounded-lg">
             <div class="flex flex-col bg-zinc-100 items-center justify-center p-4">
