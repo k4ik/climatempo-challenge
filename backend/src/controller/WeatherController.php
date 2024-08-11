@@ -20,7 +20,7 @@ class WeatherController
     $city = $cityController->getCity();
 
     if ($city === null) {
-      echo json_encode(["error" => "Fill in all fields"]);
+      echo json_encode(["error" => "Preencha os campos..."]);
       return;
     }
    
@@ -39,7 +39,7 @@ class WeatherController
 
       $data = json_decode($response, true);
       if($data["location"]["name"] == null) {
-        echo json_encode(["error" => "Sorry, we couldn't find your city :c"]);
+        echo json_encode(["error" => "Nos desculpe, não escontramos sua cidade :c"]);
         return;
       }
 
